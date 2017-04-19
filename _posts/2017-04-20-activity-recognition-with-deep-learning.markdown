@@ -8,4 +8,4 @@ Automatically recognizing people's activity by analyzing videos can save a lot o
 
 While there are a few good research papers on how to use deep learning for human activity recognition in video, I am yet to see a good demo that can get a beginner started. So, I thought of creating one.
 
-Check out my repository [JLSTM-KTH][https://github.com/inubushi/LSTM-KTH] for an example of using convolutional neural networks and LSTM recurrent neural networks for recognizing activity in the KTH dataset.
+Check out my repository [LSTM-KTH](https://github.com/inubushi/LSTM-KTH) for an example of using convolutional neural networks and LSTM recurrent neural networks for recognizing activity in the KTH dataset.
