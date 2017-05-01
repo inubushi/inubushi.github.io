@@ -5,9 +5,7 @@ date:   2017-05-02 06:30:00 +0900
 categories: iOS apps, Autism
 ---
 
-![Alt text](https://inubushi.github.io/images/mom-s-timer.png)
-
-I founded [Yubi](https://yubi.ml), a small business that designs snd develops mobile apps, in 2009. At Yubi, I help both indie and medium scall app developers to improve the user experiences of their apps.
+I founded [Yubi](http://yubi.ml), a small business that designs snd develops mobile apps, in 2009. At Yubi, I help both indie and medium scall app developers to improve the user experiences of their apps.
 
 Yubi creates its own apps, too. Today, we launched "[Mom's Timer](https://itunes.apple.com/us/app/moms-timer/id1230221153?ls=1&mt=8)", a timer app for autistic children.
 
