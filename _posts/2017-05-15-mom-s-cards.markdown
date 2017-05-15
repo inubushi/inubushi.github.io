@@ -9,8 +9,8 @@ Flashcards with sounds are a fun way for small children to learn words. However,
 
 It is easier for kids to learn words if the flashcards show photos of things that they have seen around them; like their own stuff. And for some words (like "grandma"), you have to make your own cards.
 
-My Karuta is an easy-to-use flashcard app. You can make your own flashcards, with photos and sounds. Make flashcards with things the child sees around him, to make learning words easy and fast. Hearing the voice of mom, dad, or even a loving grandpa, will add both fun and motivation!
+[Mom's Cards](https://itunes.apple.com/jp/app/moms-cards/id1175190503?l=en&mt=8) is an easy-to-use flashcard app. You can make your own flashcards, with photos and sounds. Make flashcards with things the child sees around him, to make learning words easy and fast. Hearing the voice of mom, dad, or even a loving grandpa, will add both fun and motivation!
 
 Use your imaginations to make more interesting content; you can record storybooks, teach letters, and do many more things with this single app!
 
-We made My Karuta to help a child who had trouble learning words, and found it very helpful. We now share it with you for free, and hope it will help many more kids!
+We made Mom's Cards to help a child who had trouble learning words, and found it very helpful. We now share it with you for free, and hope it will help many more kids!
