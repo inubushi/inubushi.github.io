@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Inubushi&#39;s Projects</title>
-  <meta name="description" content="I try to make gadgets and software that help people. When I think a project can be useful, I will share it here.">
+  <title>Using Eigen on iOS</title>
+  <meta name="description" content="Eigen is a collection of platform independent libraries for mathematical computations. It is popular because of being open-source, too. Developing OS X apps ...">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/">
+  <link rel="canonical" href="http://localhost:4000/ios/programming/2017/04/20/using-eigen-with-ios.html">
   <link rel="alternate" type="application/rss+xml" title="Inubushi&#39;s Projects" href="/feed.xml">
   
   
@@ -58,52 +58,29 @@
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <div class="home">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <h1 class="page-heading">Posts</h1>
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Using Eigen on iOS</h1>
+    <p class="post-meta"><time datetime="2017-04-20T06:27:27+09:00" itemprop="datePublished">Apr 20, 2017</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>Eigen is a collection of platform independent libraries for mathematical computations. It is popular because of being open-source, too. Developing OS X apps that use Eigen is straightforward. Just include the correct headers, and you are done.</p>
+
+<p>However, things are not that easy when it comes to iOS apps. Several compiler errors have been reported.</p>
+
+<p>The good news is, doing two things can fix most of these problems:</p>
+
+<ol>
+  <li>put #include directives relating to Eigen at the top of the program file.</li>
+  <li>under the Build Settings of the project, look for “C++ Language Dialect” and “C++ Standard Library” settings. Instead of “Compiler Default”, you can selecting different settings. I do not want to suggest a particular setting because that might clash with other libraries that you have included.</li>
+</ol>
+
+  </div>
+
   
-  
-
-
-  <ul class="post-list">
-    
-      <li>
-        <span class="post-meta">May 2, 2017</span>
-
-        <h2>
-          <a class="post-link" href="/ios/apps,/autism/2017/05/02/mom-s-cards.html">Mom&#39;s Cards: a Custom Flashcard App</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">May 2, 2017</span>
-
-        <h2>
-          <a class="post-link" href="/ios/apps,/autism/2017/05/02/mom-s-timer.html">Mom&#39;s Timer: a Timer App for Autistic Kids</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Apr 20, 2017</span>
-
-        <h2>
-          <a class="post-link" href="/ios/programming/2017/04/20/using-eigen-with-ios.html">Using Eigen on iOS</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Apr 20, 2017</span>
-
-        <h2>
-          <a class="post-link" href="/deep/learning/2017/04/20/activity-recognition-with-deep-learning.html">Activity Recognition with Deep Neural Networks</a>
-        </h2>
-      </li>
-    
-  </ul>
-
-  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
-
-</div>
+</article>
 
       </div>
     </main>
