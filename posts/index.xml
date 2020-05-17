@@ -17,8 +17,8 @@
       <pubDate>Sat, 16 May 2020 13:48:33 +0900</pubDate>
       
       <guid>https://inubushi.github.io/posts/my-first-post/</guid>
-      <description>With the easy-to-use CoreML framework and the fast Bionic neural processor, the iPhone is an excellent platform for AI apps. The his blog and to provide useful resources for developing AI-based apps for iOS, with particular emphasis on computer vision.
-I will occasionally divert to other topics like new deep learning networks and interesting app ideas. Stay tuned!</description>
+      <description>AI, particularly Deep Learning technology, is hot these days. With the easy-to-use CoreML framework and the fast Bionic neural processor, the iPhone is an excellent platform for AI apps. So, we should now be able to develop &amp;ldquo;AI apps&amp;rdquo; that provide great user experiences.
+However, it&amp;rsquo;s hard to find good tutorials, repos and other resources that help us to develop AI apps for iPhone. AI tutorials focus mainly on the AI side, and iOS resources on this topic are hard to find.</description>
     </item>
     
   </channel>
