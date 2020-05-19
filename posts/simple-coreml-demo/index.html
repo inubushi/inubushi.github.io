@@ -37,7 +37,7 @@ In AI terms, the photo is called an image; the categories are called classes. Th
 In AI terms, the photo is called an image; the categories are called classes. The AI (in our case a Deep Neural Network) processes the input image, and decides how likely it is to belong to each class.">
 <meta itemprop="datePublished" content="2020-05-19T03:28:58&#43;09:00" />
 <meta itemprop="dateModified" content="2020-05-19T03:28:58&#43;09:00" />
-<meta itemprop="wordCount" content="742">
+<meta itemprop="wordCount" content="741">
 
 
 
@@ -178,56 +178,56 @@ let model = MobileNetV2()
 a photo from a few samples. But the real work on image classification is done
 in the function <code>classifyImage()</code> (ViewController.swift, line 90)</li>
 </ol>
-<pre><code>//MARK: Classification
-func classifyImage(img:UIImage) {
-    // conversion to the correct input size,
-    // and get the image data to a pixel buffer
-    UIGraphicsBeginImageContextWithOptions(CGSize(width: 224, height: 224), true, 2.0)
-    img.draw(in: CGRect(x: 0, y: 0, width: 224, height: 224))
-    let newImage = UIGraphicsGetImageFromCurrentImageContext()!
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">//</span><span style="color:#75715e">MARK:</span><span style="color:#75715e"> Classification</span>
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">classifyImage</span>(img:UIImage) {
+    <span style="color:#75715e">// conversion to the correct input size,</span>
+    <span style="color:#75715e">// and get the image data to a pixel buffer</span>
+    UIGraphicsBeginImageContextWithOptions(CGSize(width: <span style="color:#ae81ff">224</span>, height: <span style="color:#ae81ff">224</span>), <span style="color:#66d9ef">true</span>, <span style="color:#ae81ff">2.0</span>)
+    img.draw(<span style="color:#66d9ef">in</span>: CGRect(x: <span style="color:#ae81ff">0</span>, y: <span style="color:#ae81ff">0</span>, width: <span style="color:#ae81ff">224</span>, height: <span style="color:#ae81ff">224</span>))
+    <span style="color:#66d9ef">let</span> newImage = UIGraphicsGetImageFromCurrentImageContext()<span style="color:#f92672">!</span>
     UIGraphicsEndImageContext()
 
-    let attrs = [kCVPixelBufferCGImageCompatibilityKey: kCFBooleanTrue, kCVPixelBufferCGBitmapContextCompatibilityKey: kCFBooleanTrue] as CFDictionary
-    var pixelBuffer : CVPixelBuffer?
-    let status = CVPixelBufferCreate(kCFAllocatorDefault, Int(newImage.size.width), Int(newImage.size.height), kCVPixelFormatType_32ARGB, attrs, &amp;pixelBuffer)
-    guard (status == kCVReturnSuccess) else {
-        return
+    <span style="color:#66d9ef">let</span> attrs = [kCVPixelBufferCGImageCompatibilityKey: kCFBooleanTrue, kCVPixelBufferCGBitmapContextCompatibilityKey: kCFBooleanTrue] <span style="color:#66d9ef">as</span> CFDictionary
+    <span style="color:#66d9ef">var</span> pixelBuffer : CVPixelBuffer?
+    <span style="color:#66d9ef">let</span> status = CVPixelBufferCreate(kCFAllocatorDefault, Int(newImage.size.width), Int(newImage.size.height), kCVPixelFormatType_32ARGB, attrs, &amp;pixelBuffer)
+    <span style="color:#66d9ef">guard</span> (status == kCVReturnSuccess) <span style="color:#66d9ef">else</span> {
+        <span style="color:#66d9ef">return</span>
     }
 
-    CVPixelBufferLockBaseAddress(pixelBuffer!, CVPixelBufferLockFlags(rawValue: 0))
-    let pixelData = CVPixelBufferGetBaseAddress(pixelBuffer!)
+    CVPixelBufferLockBaseAddress(pixelBuffer!, CVPixelBufferLockFlags(rawValue: <span style="color:#ae81ff">0</span>))
+    <span style="color:#66d9ef">let</span> pixelData = CVPixelBufferGetBaseAddress(pixelBuffer!)
 
-    let rgbColorSpace = CGColorSpaceCreateDeviceRGB()
-    let context = CGContext(data: pixelData, width: Int(newImage.size.width), height: Int(newImage.size.height), bitsPerComponent: 8, bytesPerRow: CVPixelBufferGetBytesPerRow(pixelBuffer!), space: rgbColorSpace, bitmapInfo: CGImageAlphaInfo.noneSkipFirst.rawValue)
+    <span style="color:#66d9ef">let</span> rgbColorSpace = CGColorSpaceCreateDeviceRGB()
+    <span style="color:#66d9ef">let</span> context = CGContext(data: pixelData, width: Int(newImage.size.width), height: Int(newImage.size.height), bitsPerComponent: <span style="color:#ae81ff">8</span>, bytesPerRow: CVPixelBufferGetBytesPerRow(pixelBuffer!), space: rgbColorSpace, bitmapInfo: CGImageAlphaInfo.noneSkipFirst.rawValue)
 
-    context?.translateBy(x: 0, y: newImage.size.height)
-    context?.scaleBy(x: 1.0, y: -1.0)
+    context?.translateBy(x: <span style="color:#ae81ff">0</span>, y: newImage.size.height)
+    context?.scaleBy(x: <span style="color:#ae81ff">1.0</span>, y: <span style="color:#f92672">-</span><span style="color:#ae81ff">1.0</span>)
 
     UIGraphicsPushContext(context!)
-    newImage.draw(in: CGRect(x: 0, y: 0, width: newImage.size.width, height: newImage.size.height))
+    newImage.draw(<span style="color:#66d9ef">in</span>: CGRect(x: <span style="color:#ae81ff">0</span>, y: <span style="color:#ae81ff">0</span>, width: newImage.size.width, height: newImage.size.height))
     UIGraphicsPopContext()
-    CVPixelBufferUnlockBaseAddress(pixelBuffer!, CVPixelBufferLockFlags(rawValue: 0))
+    CVPixelBufferUnlockBaseAddress(pixelBuffer!, CVPixelBufferLockFlags(rawValue: <span style="color:#ae81ff">0</span>))
 
-    // forward pass with time measurement
-    let start = DispatchTime.now()
-    guard let prediction = try? model.prediction(image: pixelBuffer!) else {
-        return
+    <span style="color:#75715e">// forward pass with time measurement</span>
+    <span style="color:#66d9ef">let</span> start = DispatchTime.now()
+    <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> prediction = <span style="color:#66d9ef">try</span>? model.prediction(image: pixelBuffer!) <span style="color:#66d9ef">else</span> {
+        <span style="color:#66d9ef">return</span>
     }
-    let end = DispatchTime.now()
+    <span style="color:#66d9ef">let</span> end = DispatchTime.now()
 
-    let nanoTime = end.uptimeNanoseconds - start.uptimeNanoseconds // processing time in nano seconds (UInt64)
-    let timeInterval = Double(nanoTime) / 1_000_000 // convert to milliseconds, for ease of reading
+    <span style="color:#66d9ef">let</span> nanoTime = end.uptimeNanoseconds <span style="color:#f92672">-</span> start.uptimeNanoseconds <span style="color:#75715e">// processing time in nano seconds (UInt64)</span>
+    <span style="color:#66d9ef">let</span> timeInterval = Double(nanoTime) <span style="color:#f92672">/</span> <span style="color:#ae81ff">1_000_000</span> <span style="color:#75715e">// convert to milliseconds, for ease of reading</span>
 
-    var resultString: String = &quot;AI thinks this is a \(prediction.classLabel).&quot;
-    resultString += String(format:&quot;\n(%f milliseconds)&quot;, timeInterval)
+    <span style="color:#66d9ef">var</span> resultString: String = <span style="color:#e6db74">&#34;AI thinks this is a </span><span style="color:#e6db74">\(</span>prediction.classLabel<span style="color:#e6db74">)</span><span style="color:#e6db74">.&#34;</span>
+    resultString <span style="color:#f92672">+=</span> String(format:<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">(%f milliseconds)&#34;</span>, timeInterval)
 
-    // update results on main thread
+    <span style="color:#75715e">// update results on main thread</span>
     DispatchQueue.main.async {
-        self.activityIndicator.stopAnimating()
-        self.labelInfo.text = resultString
+        <span style="color:#66d9ef">self</span>.activityIndicator.stopAnimating()
+        <span style="color:#66d9ef">self</span>.labelInfo.text = resultString
     }
 }
-</code></pre><p>Most deep neural networks require input images to be at a pre-determind size.
+</code></pre></div><p>Most deep neural networks require input images to be at a pre-determind size.
 For MobileNetV2, the size is 224x224 pixels. We first resize the photo to this
 size, and get the data to <code>pixelBuffer</code>.</p>
 <p>The pixel buffer is then passed as input to MobileNetV2, for prediction.</p>
