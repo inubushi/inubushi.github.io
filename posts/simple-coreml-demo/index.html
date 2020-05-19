@@ -37,7 +37,7 @@ In AI terms, the photo is called an image; the categories are called classes. Th
 In AI terms, the photo is called an image; the categories are called classes. The AI (in our case a Deep Neural Network) processes the input image, and decides how likely it is to belong to each class.">
 <meta itemprop="datePublished" content="2020-05-19T03:28:58&#43;09:00" />
 <meta itemprop="dateModified" content="2020-05-19T03:28:58&#43;09:00" />
-<meta itemprop="wordCount" content="310">
+<meta itemprop="wordCount" content="742">
 
 
 
@@ -174,8 +174,78 @@ since we are not going to change it within the app lifecycle
 <pre><code>// using the MobileNet V2 model, because it is fast
 let model = MobileNetV2()
 </code></pre><ol start="4">
-<li>More details coming soon&hellip;</li>
+<li>The app includes code for using the camera to take a photo, and also to pick
+a photo from a few samples. But the real work on image classification is done
+in the function <code>classifyImage()</code> (ViewController.swift, line 90)</li>
 </ol>
+<pre><code>//MARK: Classification
+    func classifyImage(img:UIImage) {
+        // conversion to the correct input size,
+        // and get the image data to a pixel buffer
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: 224, height: 224), true, 2.0)
+        img.draw(in: CGRect(x: 0, y: 0, width: 224, height: 224))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+
+        let attrs = [kCVPixelBufferCGImageCompatibilityKey: kCFBooleanTrue, kCVPixelBufferCGBitmapContextCompatibilityKey: kCFBooleanTrue] as CFDictionary
+        var pixelBuffer : CVPixelBuffer?
+        let status = CVPixelBufferCreate(kCFAllocatorDefault, Int(newImage.size.width), Int(newImage.size.height), kCVPixelFormatType_32ARGB, attrs, &amp;pixelBuffer)
+        guard (status == kCVReturnSuccess) else {
+            return
+        }
+
+        CVPixelBufferLockBaseAddress(pixelBuffer!, CVPixelBufferLockFlags(rawValue: 0))
+        let pixelData = CVPixelBufferGetBaseAddress(pixelBuffer!)
+
+        let rgbColorSpace = CGColorSpaceCreateDeviceRGB()
+        let context = CGContext(data: pixelData, width: Int(newImage.size.width), height: Int(newImage.size.height), bitsPerComponent: 8, bytesPerRow: CVPixelBufferGetBytesPerRow(pixelBuffer!), space: rgbColorSpace, bitmapInfo: CGImageAlphaInfo.noneSkipFirst.rawValue)
+
+        context?.translateBy(x: 0, y: newImage.size.height)
+        context?.scaleBy(x: 1.0, y: -1.0)
+
+        UIGraphicsPushContext(context!)
+        newImage.draw(in: CGRect(x: 0, y: 0, width: newImage.size.width, height: newImage.size.height))
+        UIGraphicsPopContext()
+        CVPixelBufferUnlockBaseAddress(pixelBuffer!, CVPixelBufferLockFlags(rawValue: 0))
+
+        // forward pass with time measurement
+        let start = DispatchTime.now()
+        guard let prediction = try? model.prediction(image: pixelBuffer!) else {
+            return
+        }
+        let end = DispatchTime.now()
+
+        let nanoTime = end.uptimeNanoseconds - start.uptimeNanoseconds // processing time in nano seconds (UInt64)
+        let timeInterval = Double(nanoTime) / 1_000_000 // convert to milliseconds, for ease of reading
+
+        var resultString: String = &quot;AI thinks this is a \(prediction.classLabel).&quot;
+        resultString += String(format:&quot;\n(%f milliseconds)&quot;, timeInterval)
+
+        // update results on main thread
+        DispatchQueue.main.async {
+            self.activityIndicator.stopAnimating()
+            self.labelInfo.text = resultString
+        }
+    }
+</code></pre><p>Most deep neural networks require input images to be at a pre-determind size.
+For MobileNetV2, the size is 224x224 pixels. We first resize the photo to this
+size, and get the data to <code>pixelBuffer</code>.</p>
+<p>The pixel buffer is then passed as input to MobileNetV2, for prediction.</p>
+<pre><code>guard let prediction = try? model.prediction(image: pixelBuffer!) else {
+    return
+}
+</code></pre><p>The variable <code>prediction.classLabel</code> contains a string describing the
+category that the photo belongs to.</p>
+<p>You will note that I have also added some code to calculate the time taken by
+the model to predict the class. Most of the good models are large, and take a
+considerable amount of time for prediction. On a new iPhone like iPhone 11 Pro,
+MobileNetV2 takes less than 10 milliseconds for prediction. This is because the
+<em>Bionic</em> processor in new iPhones has been specifically designed to support
+deep neural networking functions.</p>
+<p>So, you now have a very simple iPhone app that can load a trained deep neural
+network and use it to classify images. In coming posts, I will build up on this
+to carry out other tasks like detection and segmentation, and also explain how
+to train your own neural networks.</p>
 <ul class="pa0">
   
 </ul>
