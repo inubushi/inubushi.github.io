@@ -37,7 +37,7 @@ In AI terms, the photo is called an image; the categories are called classes. Th
 In AI terms, the photo is called an image; the categories are called classes. The AI (in our case a Deep Neural Network) processes the input image, and decides how likely it is to belong to each class.">
 <meta itemprop="datePublished" content="2020-05-19T03:28:58&#43;09:00" />
 <meta itemprop="dateModified" content="2020-05-19T03:28:58&#43;09:00" />
-<meta itemprop="wordCount" content="244">
+<meta itemprop="wordCount" content="310">
 
 
 
@@ -155,11 +155,26 @@ important parts of the app below.</p>
 <ol>
 <li>Create a single view iOS Swift app.</li>
 </ol>
-<p>The first thing you need to do is adding CoreML framework to the <code>ViewController</code>
-class.</p>
-<pre><code>import CoreML
+<p>The first thing you need to do is adding CoreML framework to the ViewController
+class (ViewController.swift, line 11).</p>
+<pre><code>// we need to import CoreML framework
+import CoreML
 </code></pre><ol start="2">
-<li>(stay tuned&hellip;).</li>
+<li>
+<p>Download the CoreML model called &ldquo;MobileNetV2&rdquo; from
+<a href="https://developer.apple.com/machine-learning/models/">here</a>,
+and add it to the project.</p>
+</li>
+<li>
+<p>Declare a class variable for MobileNetV2. We can initialize it immediately
+since we are not going to change it within the app lifecycle
+(ViewController.swift, line 20).</p>
+</li>
+</ol>
+<pre><code>// using the MobileNet V2 model, because it is fast
+let model = MobileNetV2()
+</code></pre><ol start="4">
+<li>More details coming soon&hellip;</li>
 </ol>
 <ul class="pa0">
   
