@@ -6,10 +6,20 @@
     <description>Recent content in Posts on The AIPhone Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 19 May 2020 03:28:58 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 31 May 2020 10:47:13 +0900</lastBuildDate>
     
 	<atom:link href="https://inubushi.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Image Detection Vs. Image Classification</title>
+      <link>https://inubushi.github.io/posts/detection/</link>
+      <pubDate>Sun, 31 May 2020 10:47:13 +0900</pubDate>
+      
+      <guid>https://inubushi.github.io/posts/detection/</guid>
+      <description>In the previous post, we learned what Image Classification is. To remind in simple terms, Image classification is the task of identifying the category of the dominant object in an image (photo, or camera preview). There is a list of categories that the classifier knows how to distinguish between, and the dominant object HAS TO belong to one of them, for meaningful results.
+Image classification does have a variety of applications.</description>
+    </item>
     
     <item>
       <title>Simple iOS Coreml Demo: Image Classification</title>

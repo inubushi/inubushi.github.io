@@ -3,17 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://inubushi.github.io/posts/</loc>
-    <lastmod>2020-05-19T03:28:58+09:00</lastmod>
+    <loc>https://inubushi.github.io/posts/detection/</loc>
+    <lastmod>2020-05-31T10:47:13+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://inubushi.github.io/posts/simple-coreml-demo/</loc>
-    <lastmod>2020-05-19T03:28:58+09:00</lastmod>
+    <loc>https://inubushi.github.io/posts/</loc>
+    <lastmod>2020-05-31T10:47:13+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://inubushi.github.io/</loc>
+    <lastmod>2020-05-31T10:47:13+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://inubushi.github.io/posts/simple-coreml-demo/</loc>
     <lastmod>2020-05-19T03:28:58+09:00</lastmod>
   </url>
   
