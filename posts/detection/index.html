@@ -37,7 +37,7 @@ Image classification does have a variety of applications." />
 Image classification does have a variety of applications.">
 <meta itemprop="datePublished" content="2020-05-31T10:47:13&#43;09:00" />
 <meta itemprop="dateModified" content="2020-05-31T10:47:13&#43;09:00" />
-<meta itemprop="wordCount" content="323">
+<meta itemprop="wordCount" content="388">
 
 
 
@@ -147,9 +147,29 @@ Information about the number of people will not be available. Obviously, this
 does not fit many applications in automatic surveillance.</p>
 <p><em>Image detection</em> is the technology required for this kind of tasks. In image
 detection, the AI detects the positions of all instances of known objects.
-For example, a detector for vehicles will detect both the categories and
-positions of all vehicles in a given photo.</p>
+The image below shows an example of detecting different obects in a photo.</p>
 <p><img src="/images/detection_result.jpg" alt=""></p>
+<p>The following are some importnt observations coming from this image:</p>
+<ul>
+<li>
+<p>each detected object belongs to one of the classes that the detector has been
+trained to identify</p>
+</li>
+<li>
+<p>multiple objects from the same class are detected</p>
+</li>
+<li>
+<p>for each detected object, the bounds of a rectangle around the object
+(called <em>bounding box</em>) is provided as output</p>
+</li>
+<li>
+<p>the bounding boxes can overlap</p>
+</li>
+<li>
+<p>the area outside the bounding boxes is considered as <em>background</em> by the
+detector</p>
+</li>
+</ul>
 <p>A good example for image detection is available
 <a href="https://developer.apple.com/documentation/vision/recognizing_objects_in_live_capture">here</a>
 under Apple&rsquo;s documentation on the <em>Vision framework</em>. This demo runs on live
