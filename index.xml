@@ -6,10 +6,20 @@
     <description>Recent content on The AIPhone Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 31 May 2020 10:47:13 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 14 Jun 2020 10:57:20 +0900</lastBuildDate>
     
 	<atom:link href="https://inubushi.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Detection_ios</title>
+      <link>https://inubushi.github.io/posts/detection_ios/</link>
+      <pubDate>Sun, 14 Jun 2020 10:57:20 +0900</pubDate>
+      
+      <guid>https://inubushi.github.io/posts/detection_ios/</guid>
+      <description>I created a simple demo app for object detection on iPhone. The model used in this app is the Yolo V3 model hosted by Apple here. The code for visualization is a modification of the source in Apple&amp;rsquo;s object detection demo.
+Most of the code in this app is identical to that of the classification example. I have added some comments to briefly explain the detection stuff. Will come back and update this post with details, when I have time.</description>
+    </item>
     
     <item>
       <title>Image Detection Vs. Image Classification</title>
