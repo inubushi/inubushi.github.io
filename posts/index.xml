@@ -6,10 +6,19 @@
     <description>Recent content in Posts on The AIPhone Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 14 Jun 2020 10:57:20 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 15 Jun 2020 18:35:48 +0900</lastBuildDate>
     
 	<atom:link href="https://inubushi.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Segmentation</title>
+      <link>https://inubushi.github.io/posts/segmentation/</link>
+      <pubDate>Mon, 15 Jun 2020 18:35:48 +0900</pubDate>
+      
+      <guid>https://inubushi.github.io/posts/segmentation/</guid>
+      <description>The next post will be about image Segmentation.</description>
+    </item>
     
     <item>
       <title>Object Detection: iOS example</title>
