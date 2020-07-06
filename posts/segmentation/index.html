@@ -37,7 +37,7 @@ You can see that segmentation gives more detailed results than classification an
 You can see that segmentation gives more detailed results than classification and detection. In classification, only one dominant object is detected as the result. With detection, you can find multiple objects with their locations, but the locations are just rectangles containing the objects.">
 <meta itemprop="datePublished" content="2020-06-15T18:35:48&#43;09:00" />
 <meta itemprop="dateModified" content="2020-06-15T18:35:48&#43;09:00" />
-<meta itemprop="wordCount" content="210">
+<meta itemprop="wordCount" content="405">
 
 
 
@@ -156,7 +156,24 @@ items in the photo that the network cannot recognize.</p>
 </li>
 </ul>
 <p>You will find sample code for an iOS app demonstrating image segmentation
-<a href="https://github.com/inubushi/ios-coreml-segmentation">here</a>. I will come back to add and describe the code later.</p>
+<a href="https://github.com/inubushi/ios-coreml-segmentation">here</a>.</p>
+<p>Most parts of the code are very similar to those in the previous apps. The
+main difference in this app is the file <code>DeepLabUtils.swift</code>. It contains the
+supporting functions that you need to convert the output of the network to
+a meaningful, easy-to-see result.</p>
+<p>The input to the network is a 513x513 pixel image (if the photo that you
+selected is larger than that, it is resized in the code). The output of the
+network is a 513x513 array of integer labels, each containing a value in the
+range [0, 20]. The value 0 corresponds to the background, and the other values
+for different categories of objects (like <em>cat</em>).</p>
+<p>If you directly convert these output values the an image, you can get a
+grayscale image. But it is going to look very dark and the contrast between
+different labels will be very low. DeepLabUtils.swift contains code to convert
+this output to a 24-bit color image, with different colors for different
+classes. It also contains the class labels (which are not in the model file),
+and I have added code fore creating a legend mapping the colors to class labels.</p>
+<p>I guess that should be enough to understand the code. Feel free to post
+comments and questions!</p>
 <ul class="pa0">
   
 </ul>
